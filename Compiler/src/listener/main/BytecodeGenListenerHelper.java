@@ -94,7 +94,8 @@ public class BytecodeGenListenerHelper {
 	
 	static String getLocalVarName(Local_declContext local_decl) {
 		// <Fill in>
-		return null; //have to modify
+		return local_decl.getChild(1).getText();
+		//return null; //have to modify
 	}
 	
 	static String getFunName(Fun_declContext ctx) {
@@ -106,6 +107,7 @@ public class BytecodeGenListenerHelper {
 	
 	static String getFunName(ExprContext ctx) {
 		// <Fill in>
+		//return (((new MiniCParser(null)).getRuleNames())[ctx.getRuleIndex()]);
 		return ctx.getChild(0).getText();
 		//return null; //have to modify
 	}

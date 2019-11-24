@@ -57,23 +57,30 @@ public class SymbolTable {
 	
 	void putLocalVar(String varname, Type type){
 		//<Fill here>
+		String test = getVarId(varname);
+		_lsymtable.put(varname, new VarInfo(type,Integer.parseInt(test)));
 	}
 	
 	void putGlobalVar(String varname, Type type){
 		//<Fill here>
+		_gsymtable.put(varname, new VarInfo(type,Integer.parseInt(getVarId(varname))));
 	}
 	
 	void putLocalVarWithInitVal(String varname, Type type, int initVar){
 		//<Fill here>
+		_lsymtable.put(varname, new VarInfo(type,Integer.parseInt(getVarId(varname)),initVar));
 	}
 	void putGlobalVarWithInitVal(String varname, Type type, int initVar){
 		//<Fill here>
-	
+		_gsymtable.put(varname, new VarInfo(type,Integer.parseInt(getVarId(varname)),initVar));
 	}
 	
 	void putParams(MiniCParser.ParamsContext params) {
 		for(int i = 0; i < params.param().size(); i++) {
 		//<Fill here>
+		//putLocalVar(
+
+
 		}
 	}
 	
@@ -89,6 +96,7 @@ public class SymbolTable {
 	
 	public String getFunSpecStr(String fname) {		
 		// <Fill here>
+		//BytecodeGenListenerHelper.
 		return null;	//have to modify
 	}
 
@@ -103,19 +111,26 @@ public class SymbolTable {
 		String rtype = "";
 		String res = "";
 		
-		// <Fill here>	
-		
+		// <Fill here>
+
 		res =  fname + "(" + argtype + ")" + rtype;
 		
 		FInfo finfo = new FInfo();
 		finfo.sigStr = res;
 		_fsymtable.put(fname, finfo);
 		
-		return res;
+ 		return res;
 	}
 	
 	String getVarId(String name){
 		// <Fill here>
+		VarInfo lvarId = (VarInfo) _lsymtable.get(name);
+		if (lvarId != null) return Integer.toString(lvarId.id);
+		VarInfo gvarID = (VarInfo) _gsymtable.get(name);
+		if (gvarID != null) {
+			return Integer.toString(gvarID.id);
+		}
+
 		return null; //have to modify
 	}
 	
@@ -144,7 +159,8 @@ public class SymbolTable {
 	// global
 	public String getVarId(Var_declContext ctx) {
 		// <Fill here>
-		return null;//have to modify
+		return ctx.IDENT().getSymbol().getText();
+		//return null;//have to modify
 	}
 
 	// local
