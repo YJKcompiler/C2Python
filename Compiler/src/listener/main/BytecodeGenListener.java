@@ -10,7 +10,7 @@ import static listener.main.SymbolTable.*;
 
 public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeListener {
 	ParseTreeProperty<String> newTexts = new ParseTreeProperty<String>();
-	listener.main.SymbolTable symbolTable = new listener.main.SymbolTable();
+	SymbolTable symbolTable = new SymbolTable();
 	
 	int tab = 0;
 	int label = 0;

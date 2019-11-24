@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac6662d2-8735-41f4-9185-9ec62bf3c283" name="Default Changelist" comment="">
+    <list default="true" id="ac6662d2-8735-41f4-9185-9ec62bf3c283" name="Default Changelist" comment="change Symbol Table import">
       <change beforePath="$PROJECT_DIR$/bin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/META-INF/BytecodeGenerator2019.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/test.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +22,11 @@
       </set>
     </option>
   </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
+  </component>
   <component name="ProjectId" id="1U0jPBjeVo0QpaActffHWkXkfVe" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
@@ -37,7 +42,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -91,7 +96,10 @@
       <updated>1574500380122</updated>
       <workItem from="1574500383454" duration="3696000" />
       <workItem from="1574506449778" duration="1393000" />
-      <workItem from="1574508453790" duration="381000" />
+      <workItem from="1574508453790" duration="1003000" />
+      <workItem from="1574560253139" duration="4953000" />
+      <workItem from="1574571404411" duration="1066000" />
+      <workItem from="1574573125415" duration="594000" />
     </task>
     <servers />
   </component>
@@ -103,10 +111,47 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="change Symbol Table import" />
+    <option name="LAST_COMMIT_MESSAGE" value="change Symbol Table import" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/listener/main/Translator.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
+          <line>12</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/listener/main/MiniCParser.java</url>
+          <line>383</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java</url>
+          <line>102</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

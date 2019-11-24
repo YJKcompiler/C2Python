@@ -99,12 +99,15 @@ public class BytecodeGenListenerHelper {
 	
 	static String getFunName(Fun_declContext ctx) {
 		// <Fill in>
-		return null; //have to modify
+		return ctx.getChild(1).getText();
+
+		//return null; //have to modify
 	}
 	
 	static String getFunName(ExprContext ctx) {
 		// <Fill in>
-		return null; //have to modify
+		return ctx.getChild(0).getText();
+		//return null; //have to modify
 	}
 	
 	static boolean noElse(If_stmtContext ctx) {
