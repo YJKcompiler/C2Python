@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac6662d2-8735-41f4-9185-9ec62bf3c283" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/bin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/listener/main/BytecodeGenListenerHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/listener/main/BytecodeGenListenerHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/listener/main/SymbolTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/listener/main/SymbolTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/src/MiniC.g4" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/MiniC.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listener/main/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/listener/main/SymbolTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -104,7 +99,7 @@
       <workItem from="1574571404411" duration="1066000" />
       <workItem from="1574573125415" duration="4341000" />
       <workItem from="1574602361416" duration="18261000" />
-      <workItem from="1574669068481" duration="1320000" />
+      <workItem from="1574669068481" duration="13498000" />
     </task>
     <task id="LOCAL-00001" summary="change getName method">
       <created>1574575382144</created>
@@ -120,7 +115,21 @@
       <option name="project" value="LOCAL" />
       <updated>1574620526251</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="recognize getMethod little">
+      <created>1574682620216</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574682620216</updated>
+    </task>
+    <task id="LOCAL-00004" summary="recognize getMethod little 2">
+      <created>1574686313584</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1574686313584</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,73 +152,91 @@
     <MESSAGE value="change Symbol Table import" />
     <MESSAGE value="change getName method" />
     <MESSAGE value="thinking put and get method" />
-    <option name="LAST_COMMIT_MESSAGE" value="thinking put and get method" />
+    <MESSAGE value="recognize getMethod little" />
+    <MESSAGE value="recognize getMethod little 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="recognize getMethod little 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/listener/main/Translator.java</url>
           <line>42</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
-          <line>12</line>
+          <line>13</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/listener/main/MiniCParser.java</url>
           <line>383</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
-          <line>24</line>
+          <line>25</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
-          <line>365</line>
+          <line>403</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java</url>
           <line>112</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java</url>
           <line>103</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java</url>
           <line>110</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/listener/main/SymbolTable.java</url>
           <line>60</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
-          <line>27</line>
+          <line>28</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/listener/main/MiniCParser.java</url>
           <line>874</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
-          <line>54</line>
+          <line>55</line>
           <properties class="listener.main.BytecodeGenListener" method="enterLocal_decl">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
+          <line>147</line>
+          <properties class="listener.main.BytecodeGenListener" method="exitFun_decl">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
+          <line>89</line>
+          <properties class="listener.main.BytecodeGenListener" method="exitDecl">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
