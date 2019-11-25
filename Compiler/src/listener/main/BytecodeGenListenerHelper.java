@@ -79,6 +79,7 @@ public class BytecodeGenListenerHelper {
 	// params
 	static String getParamName(ParamContext param) {
 		// <Fill in>
+
 		return null; //have to modify
 	}
 	
@@ -117,12 +118,16 @@ public class BytecodeGenListenerHelper {
 	}
 	
 	static String getFunProlog() {
-		// return ".class public Test .....
-		// ...
-		// invokenonvirtual java/lang/Object/<init>()
-		// return
-		// .end method"
-		return null; //have to modify
+
+		 return ".class public Test\n" +
+				".super java/lang/Object\n\n" +
+				";\n" +
+				"; standard initializer\n" +
+				".method public <init>()V\n" +
+				"\taload_0\n" +
+				"\tinvokenonvirtual java/lang/Object/<init>()V\n" +
+				"\treturn\n" +
+				".end method\n";
 	}
 	
 	static String getCurrentClassName() {

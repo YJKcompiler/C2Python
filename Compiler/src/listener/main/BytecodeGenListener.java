@@ -108,8 +108,14 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 				stmt += newTexts.get(ctx.expr_stmt());
 			else if(ctx.compound_stmt() != null)	// compound_stmt
 				stmt += newTexts.get(ctx.compound_stmt());
-			// <(0) Fill here>				
-	}
+			else if(ctx.if_stmt() != null)	// if_stmt
+				stmt += newTexts.get(ctx.if_stmt());
+			else if(ctx.while_stmt() != null)	// while_stmt
+				stmt += newTexts.get(ctx.while_stmt());
+			else if(ctx.return_stmt() != null)	// return_stmt
+				stmt += newTexts.get(ctx.return_stmt());
+			// <(0) Fill here> maybe modified
+		}
 		newTexts.put(ctx, stmt);
 	}
 	
@@ -129,12 +135,24 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 	@Override
 	public void exitWhile_stmt(MiniCParser.While_stmtContext ctx) {
 			// <(1) Fill here!>
+		String stmt = "";
+		stmt += ctx.WHILE().getText() + "(";
+		stmt += newTexts.get(ctx.expr()) + ")";
+		stmt += newTexts.get(ctx.stmt());
+		newTexts.put(ctx, stmt);
 	}
 	
 	
 	@Override
 	public void exitFun_decl(MiniCParser.Fun_declContext ctx) {
 			// <(2) Fill here!>
+		String fun_decl = "";
+		for(int i = 0; i < ctx.getChildCount(); i++){
+			//System.out.println(ctx.getChild(i).getText());
+			fun_decl += newTexts.get(ctx.getChild(i));
+		}
+		newTexts.put(ctx, fun_decl);
+		//System.out.println(ctx.getText());
 	}
 	
 

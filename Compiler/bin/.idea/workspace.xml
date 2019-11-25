@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac6662d2-8735-41f4-9185-9ec62bf3c283" name="Default Changelist" comment="change Symbol Table import">
+    <list default="true" id="ac6662d2-8735-41f4-9185-9ec62bf3c283" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/bin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/listener/main/BytecodeGenListenerHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/listener/main/BytecodeGenListenerHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/listener/main/SymbolTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/listener/main/SymbolTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/MiniC.g4" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/MiniC.g4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/listener/main/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/listener/main/SymbolTable.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +45,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -99,8 +102,25 @@
       <workItem from="1574508453790" duration="1003000" />
       <workItem from="1574560253139" duration="4953000" />
       <workItem from="1574571404411" duration="1066000" />
-      <workItem from="1574573125415" duration="594000" />
+      <workItem from="1574573125415" duration="4341000" />
+      <workItem from="1574602361416" duration="18261000" />
+      <workItem from="1574669068481" duration="1320000" />
     </task>
+    <task id="LOCAL-00001" summary="change getName method">
+      <created>1574575382144</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574575382144</updated>
+    </task>
+    <task id="LOCAL-00002" summary="thinking put and get method">
+      <created>1574620526251</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1574620526251</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -121,7 +141,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="change Symbol Table import" />
-    <option name="LAST_COMMIT_MESSAGE" value="change Symbol Table import" />
+    <MESSAGE value="change getName method" />
+    <MESSAGE value="thinking put and get method" />
+    <option name="LAST_COMMIT_MESSAGE" value="thinking put and get method" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -147,9 +169,47 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
+          <line>365</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java</url>
-          <line>102</line>
-          <option name="timeStamp" value="6" />
+          <line>112</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java</url>
+          <line>103</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java</url>
+          <line>110</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/listener/main/SymbolTable.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/listener/main/MiniCParser.java</url>
+          <line>874</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
+          <line>54</line>
+          <properties class="listener.main.BytecodeGenListener" method="enterLocal_decl">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

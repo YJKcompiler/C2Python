@@ -57,30 +57,32 @@ public class SymbolTable {
 	
 	void putLocalVar(String varname, Type type){
 		//<Fill here>
-		String test = getVarId(varname);
-		_lsymtable.put(varname, new VarInfo(type,Integer.parseInt(test)));
+		//MiniCParser.
+		_lsymtable.put(varname, new VarInfo(type, MiniCParser.INT));	//have to modify
 	}
 	
 	void putGlobalVar(String varname, Type type){
 		//<Fill here>
-		_gsymtable.put(varname, new VarInfo(type,Integer.parseInt(getVarId(varname))));
+		//_gsymtable.put(varname, new VarInfo(type,Integer.parseInt(getVarId(varname))));
+		_gsymtable.put(varname, new VarInfo(type,MiniCParser.INT));
 	}
 	
 	void putLocalVarWithInitVal(String varname, Type type, int initVar){
 		//<Fill here>
-		_lsymtable.put(varname, new VarInfo(type,Integer.parseInt(getVarId(varname)),initVar));
+		//_lsymtable.put(varname, new VarInfo(type,Integer.parseInt(getVarId(varname)),initVar));
+		_lsymtable.put(varname, new VarInfo(type, MiniCParser.INT, initVar));
 	}
 	void putGlobalVarWithInitVal(String varname, Type type, int initVar){
 		//<Fill here>
-		_gsymtable.put(varname, new VarInfo(type,Integer.parseInt(getVarId(varname)),initVar));
+		//_gsymtable.put(varname, new VarInfo(type,Integer.parseInt(getVarId(varname)),initVar));
+		_gsymtable.put(varname, new VarInfo(type, MiniCParser.INT, initVar));
 	}
 	
 	void putParams(MiniCParser.ParamsContext params) {
 		for(int i = 0; i < params.param().size(); i++) {
 		//<Fill here>
-		//putLocalVar(
-
-
+			//System.out.println("params(" + i + ") : " + params.param(i));
+			putLocalVar(params.param(i).getChild(1).getText(),Type.INT);
 		}
 	}
 	
@@ -97,12 +99,14 @@ public class SymbolTable {
 	public String getFunSpecStr(String fname) {		
 		// <Fill here>
 		//BytecodeGenListenerHelper.
-		return null;	//have to modify
+		return _fsymtable.get(fname).sigStr;
+		//return null;	//have to modify
 	}
 
 	public String getFunSpecStr(Fun_declContext ctx) {
 		// <Fill here>
-		return null;	//have to modify
+		return ctx.getText();
+		//return null;	//have to modify
 	}
 	
 	public String putFunSpecStr(Fun_declContext ctx) {
@@ -159,6 +163,7 @@ public class SymbolTable {
 	// global
 	public String getVarId(Var_declContext ctx) {
 		// <Fill here>
+		//return _gsymtable.get(ctx.IDENT().getText());
 		return ctx.IDENT().getSymbol().getText();
 		//return null;//have to modify
 	}
