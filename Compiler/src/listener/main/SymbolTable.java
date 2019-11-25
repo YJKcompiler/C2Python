@@ -105,7 +105,8 @@ public class SymbolTable {
 
 	public String getFunSpecStr(Fun_declContext ctx) {
 		// <Fill here>
-		return ctx.getText();
+
+		return getFunSpecStr(ctx.getText());
 		//return null;	//have to modify
 	}
 	
@@ -116,6 +117,7 @@ public class SymbolTable {
 		String res = "";
 		
 		// <Fill here>
+
 
 		res =  fname + "(" + argtype + ")" + rtype;
 		

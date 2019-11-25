@@ -250,6 +250,12 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 	@Override
 	public void exitReturn_stmt(MiniCParser.Return_stmtContext ctx) {
 			// <(4) Fill here>
+		String ret_stmt = "";
+		ret_stmt += newTexts.get(ctx.RETURN());
+		if (ctx.getChildCount() == 3){
+			ret_stmt += newTexts.get(ctx.expr());
+		}
+		ret_stmt += ";";
 	}
 
 	
