@@ -52,6 +52,7 @@ public class BytecodeGenListenerHelper {
 	
 	static boolean isVoidF(Fun_declContext ctx) {
 			// <Fill in>
+		if(ctx.type_spec().getText().equals(SymbolTable.Type.VOID.toString())) return true;
 		return false; //have to modify
 	}
 	
@@ -73,12 +74,16 @@ public class BytecodeGenListenerHelper {
 	}
 	static String getTypeText(Type_specContext typespec) {
 			// <Fill in>
+
 		return null;	//have to modify
 	}
 
 	// params
 	static String getParamName(ParamContext param) {
 		// <Fill in>
+		for(int i = 0; i < param.getChildCount(); i++){
+			//if(param.getChild(i) instanceof
+		}
 
 		return null; //have to modify
 	}
