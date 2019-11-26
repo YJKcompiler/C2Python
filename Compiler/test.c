@@ -1,6 +1,9 @@
 int add(int x, int y) {
-	int z ;
-	z = x+y;
+	int z = 10;
+	while(z>0){
+	    z = z - 1;
+	}
+	z = x + y + z;
 	return z;
 }
 

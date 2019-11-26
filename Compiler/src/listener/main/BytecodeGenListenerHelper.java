@@ -52,7 +52,7 @@ public class BytecodeGenListenerHelper {
 	
 	static boolean isVoidF(Fun_declContext ctx) {
 			// <Fill in>
-		if(ctx.type_spec().getText().equals(SymbolTable.Type.VOID.toString())) return true;
+		if(ctx.type_spec().getText().equals("void")) { return true; }
 		return false; //have to modify
 	}
 	
@@ -74,18 +74,19 @@ public class BytecodeGenListenerHelper {
 	}
 	static String getTypeText(Type_specContext typespec) {
 			// <Fill in>
-
+		switch (typespec.getText()){
+			case "int":
+				return "I";
+			case "void":
+				return "V";
+		}
 		return null;	//have to modify
 	}
 
 	// params
 	static String getParamName(ParamContext param) {
 		// <Fill in>
-		for(int i = 0; i < param.getChildCount(); i++){
-			//if(param.getChild(i) instanceof
-		}
-
-		return null; //have to modify
+		return param.getChild(1).getText();
 	}
 	
 	static String getParamTypesText(ParamsContext params) {
@@ -101,21 +102,16 @@ public class BytecodeGenListenerHelper {
 	static String getLocalVarName(Local_declContext local_decl) {
 		// <Fill in>
 		return local_decl.getChild(1).getText();
-		//return null; //have to modify
 	}
 	
 	static String getFunName(Fun_declContext ctx) {
 		// <Fill in>
 		return ctx.getChild(1).getText();
-
-		//return null; //have to modify
 	}
 	
 	static String getFunName(ExprContext ctx) {
 		// <Fill in>
-		//return (((new MiniCParser(null)).getRuleNames())[ctx.getRuleIndex()]);
 		return ctx.getChild(0).getText();
-		//return null; //have to modify
 	}
 	
 	static boolean noElse(If_stmtContext ctx) {
@@ -123,7 +119,6 @@ public class BytecodeGenListenerHelper {
 	}
 	
 	static String getFunProlog() {
-
 		 return ".class public Test\n" +
 				".super java/lang/Object\n\n" +
 				";\n" +
@@ -137,5 +132,12 @@ public class BytecodeGenListenerHelper {
 	
 	static String getCurrentClassName() {
 		return "Test";
+	}
+	static String getIndent(int tab){
+		String tabs = "";
+		for (int i = 0; i < tab; i++) {
+			tabs += "\t";
+		}
+		return tabs;
 	}
 }
