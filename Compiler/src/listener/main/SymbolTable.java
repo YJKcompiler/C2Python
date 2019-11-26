@@ -58,25 +58,25 @@ public class SymbolTable {
 
     void putLocalVar(String varname, Type type) {
         //<Fill here>
-        _lsymtable.put(varname, new VarInfo(type, MiniCParser.INT));    //have to modify
+        _lsymtable.put(varname, new VarInfo(type, _localVarID++));    //have to modify
     }
 
     void putGlobalVar(String varname, Type type) {
         //<Fill here>
         //_gsymtable.put(varname, new VarInfo(type,Integer.parseInt(getVarId(varname))));
-        _gsymtable.put(varname, new VarInfo(type, MiniCParser.INT));
+        _gsymtable.put(varname, new VarInfo(type, _globalVarID++));
     }
 
     void putLocalVarWithInitVal(String varname, Type type, int initVar) {
         //<Fill here>
         //_lsymtable.put(varname, new VarInfo(type,Integer.parseInt(getVarId(varname)),initVar));
-        _lsymtable.put(varname, new VarInfo(type, MiniCParser.INT, initVar));
+        _lsymtable.put(varname, new VarInfo(type, _localVarID++, initVar));
     }
 
     void putGlobalVarWithInitVal(String varname, Type type, int initVar) {
         //<Fill here>
         //_gsymtable.put(varname, new VarInfo(type,Integer.parseInt(getVarId(varname)),initVar));
-        _gsymtable.put(varname, new VarInfo(type, MiniCParser.INT, initVar));
+        _gsymtable.put(varname, new VarInfo(type, _globalVarID++, initVar));
     }
 
     void putParams(MiniCParser.ParamsContext params) {
@@ -118,6 +118,7 @@ public class SymbolTable {
         String res = "";
 
         // <Fill here>
+        argtype = BytecodeGenListenerHelper.getParamTypesText(ctx.params());
 
 
         res = fname + "(" + argtype + ")" + rtype;

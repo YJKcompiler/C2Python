@@ -141,7 +141,6 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     public void exitFun_decl(MiniCParser.Fun_declContext ctx) {
         // <(2) Fill here!>
         String fun_decl = funcHeader(ctx, ctx.IDENT().getText());
-        System.out.println("test : " + fun_decl);
         fun_decl += newTexts.get(ctx.compound_stmt());
 
         if (isVoidF(ctx)) {
