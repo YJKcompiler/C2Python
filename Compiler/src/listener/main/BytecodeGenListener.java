@@ -158,7 +158,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 
     @Override
     public void exitParam(MiniCParser.ParamContext ctx) {
-        return;
+        newTexts.put(ctx, ctx.IDENT().getText());
     }
 
 
