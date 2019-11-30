@@ -253,7 +253,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     @Override
     public void exitReturn_stmt(MiniCParser.Return_stmtContext ctx) {
         // <(4) Fill here>
-        String stmt = "return "; // 리턴문을 미리 넣어놓고
+        String stmt = "\nreturn "; // 리턴문을 미리 넣어놓고
         if (ctx.expr() != null) { // expr에 값이 있다면.
             stmt += newTexts.get(ctx.expr()); // 거기의 구문을 가져와서 다시 stmt에 스트링으로 저장한다.
         }
