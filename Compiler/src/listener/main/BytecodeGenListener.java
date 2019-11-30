@@ -1,5 +1,6 @@
 package listener.main;
 
+import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
@@ -141,15 +142,23 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     @Override
     public void exitFun_decl(MiniCParser.Fun_declContext ctx) {
         // <(2) Fill here!>
-        String fun_decl = funcHeader(ctx, ctx.IDENT().getText());
+        String fun_decl = "def "+ctx.IDENT().getText();
+        fun_decl += newTexts.get(ctx.params());
         fun_decl += newTexts.get(ctx.compound_stmt());
 
-        if (isVoidF(ctx)) {
-            fun_decl += getIndent(tab+1) + "return\n";
-        }
-        fun_decl += ".end method\n";
+        fun_decl += ":\n";
 
         newTexts.put(ctx, fun_decl);
+    }
+
+    @Override
+    public void exitParams(ParamsContext ctx) {
+        return;
+    }
+
+    @Override
+    public void exitParam(MiniCParser.ParamContext ctx) {
+        return;
     }
 
 
@@ -171,6 +180,11 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
             // v. initialization => Later! skip now..:
         }
         newTexts.put(ctx, varDecl);
+    }
+
+    @Override
+    public void exitType_spec(MiniCParser.Type_specContext ctx) {
+        return;
     }
 
 
@@ -387,6 +401,11 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
             argsStr += newTexts.get(ctx.expr(i));
         }
         newTexts.put(ctx, argsStr);
+    }
+
+    @Override
+    public void exitEveryRule(ParserRuleContext ctx) {
+        super.exitEveryRule(ctx);
     }
 
 }
