@@ -65,7 +65,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 
     @Override
     public void exitProgram(MiniCParser.ProgramContext ctx) {
-        String classProlog = getFunProlog();
+//        String classProlog = getFunProlog();
 
         String fun_decl = "", var_decl = "";
 
@@ -76,8 +76,8 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
                 var_decl += newTexts.get(ctx.decl(i));
         }
 
-        newTexts.put(ctx, classProlog + var_decl + fun_decl);
-
+//        newTexts.put(ctx, classProlog + var_decl + fun_decl);
+        newTexts.put(ctx, var_decl + fun_decl);
         System.out.println(newTexts.get(ctx));
     }
 
@@ -201,14 +201,20 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 
     @Override
     public void exitLocal_decl(MiniCParser.Local_declContext ctx) {
-        String varDecl = "";
+        /**
+         * name : name of variable
+         * value : value of variable
+         **/
 
-        if (isDeclWithInit(ctx)) {
-//            symbolTable.putLocalVarWithInitVal(getLocalVarName(ctx), Type.INT, initVal(ctx)); //have to relocate
-
+        String name = ctx.IDENT().getText();
+        String value = "";
+        if (ctx.LITERAL() != null){
+            value = ctx.LITERAL().getText();
         }
 
-        newTexts.put(ctx, varDecl);
+        // int x;    -->  x = ""
+        // int x=10; --> x = 10
+        newTexts.put(ctx, name + " = " + value);
     }
 
 
@@ -220,6 +226,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
         for (int i = 1; i < ctx.getChildCount() - 1; i++) {
             compound_stmt += newTexts.get(ctx.getChild(i));
         }
+        compound_stmt = compound_stmt.replace("\n", "\n\t");
         newTexts.put(ctx, compound_stmt);
     }
 
@@ -281,7 +288,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     private String handleUnaryExpr(MiniCParser.ExprContext ctx, String expr) {
 
         tab++;
-        expr += getIndent(tab) + newTexts.get(ctx.expr(0));
+        expr += /*getIndent(tab) +*/ newTexts.get(ctx.expr(0));
         switch (ctx.getChild(0).getText()) {
             case "-":
                 break;
