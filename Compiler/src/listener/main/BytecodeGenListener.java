@@ -263,7 +263,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
             stmt += newTexts.get(ctx.expr()); // 거기의 구문을 가져와서 다시 stmt에 스트링으로 저장한다.
         }
         tab--;
-        newTexts.put(ctx, stmt); // 저장
+        newTexts.put(ctx, stmt); // 저
     }
 
 
