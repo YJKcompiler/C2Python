@@ -16,7 +16,6 @@ public class SymbolTable {
 
     static public class VarInfo {
         Type type;
-        int id;
         int initVal;
 
         public VarInfo(Type type, int initVal) {
@@ -39,10 +38,6 @@ public class SymbolTable {
     private Map<String, FInfo> _fsymtable = new HashMap<>();    // function
 
 
-    private int _globalVarID = 0;
-    private int _localVarID = 0;
-    private int _labelID = 0;
-    private int _tempVarID = 0;
 
     SymbolTable() {
         initFunDecl();
@@ -99,7 +94,6 @@ public class SymbolTable {
 
     public String getFunSpecStr(Fun_declContext ctx) {
         // <Fill here>
-
         return getFunSpecStr(ctx.getText());
     }
 
@@ -123,18 +117,6 @@ public class SymbolTable {
         return res;
     }
 
-    String getVarId(String name) {
-        // <Fill here>
-        VarInfo lvarId = (VarInfo) _lsymtable.get(name);
-        if (lvarId != null) return Integer.toString(lvarId.id);
-        VarInfo gvarID = (VarInfo) _gsymtable.get(name);
-        if (gvarID != null) {
-            return Integer.toString(gvarID.id);
-        }
-
-        return null; //have to modify
-    }
-
     Type getVarType(String name) {
         VarInfo lvar = (VarInfo) _lsymtable.get(name);
         if (lvar != null) {
@@ -149,27 +131,5 @@ public class SymbolTable {
         return Type.ERROR;
     }
 
-    String newLabel() {
-        return null;
-    }
-
-    String newTempVar() {
-        return null;
-    }
-
-    // global
-    public String getVarId(Var_declContext ctx) {
-        // <Fill here>
-        //return _gsymtable.get(ctx.IDENT().getText());
-        return ctx.IDENT().getSymbol().getText();
-        //return null;//have to modify
-    }
-
-    // local
-    public String getVarId(Local_declContext ctx) {
-        String sname = "";
-        sname += getVarId(ctx.IDENT().getText());
-        return sname;
-    }
 
 }
