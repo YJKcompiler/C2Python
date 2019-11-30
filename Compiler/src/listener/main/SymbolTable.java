@@ -85,12 +85,14 @@ public class SymbolTable {
     }
 
     private void initFunTable() {
-        FInfo printlninfo = new FInfo();
-        printlninfo.sigStr = "java/io/PrintStream/println(I)V";
-
-        FInfo maininfo = new FInfo();
-        maininfo.sigStr = "main([Ljava/lang/String;)V";
-        _fsymtable.put("_print", printlninfo);
+        FInfo printfInfo = new FInfo(); // 프린트 규칙
+        FInfo strcatInfo = new FInfo();
+        printfInfo.sigStr = "print";
+        strcatInfo.sigStr = ""; // 스트링을 파이썬에서 아직 못함 안함.
+        FInfo maininfo = new FInfo(); //
+        maininfo.sigStr = "if __name__ == \"__main__\": \n\tdef main():"; //
+        _fsymtable.put("printf", printfInfo);
+        _fsymtable.put("strcat", strcatInfo);
         _fsymtable.put("main", maininfo);
     }
 
