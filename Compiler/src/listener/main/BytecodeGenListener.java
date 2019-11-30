@@ -23,9 +23,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
         String fname = getFunName(ctx);
         ParamsContext params;
 
-        if (fname.equals("main")) {
-            symbolTable.putLocalVar("args", Type.INTARRAY);
-        } else {
+        if (!fname.equals("main")) {
             symbolTable.putFunSpecStr(ctx);
             params = (MiniCParser.ParamsContext) ctx.getChild(3);
             symbolTable.putParams(params);
@@ -74,7 +72,8 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
         }
 
 //        newTexts.put(ctx, classProlog + var_decl + fun_decl);
-        newTexts.put(ctx, var_decl + fun_decl);
+        String ret = var_decl + fun_decl + "\n"+symbolTable.getFunSpecStr("main");
+        newTexts.put(ctx, ret);
         System.out.println(newTexts.get(ctx));
     }
 
