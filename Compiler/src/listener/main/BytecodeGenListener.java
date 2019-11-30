@@ -120,7 +120,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     public void exitExpr_stmt(MiniCParser.Expr_stmtContext ctx) {
         String stmt = "";
         if (ctx.getChildCount() == 2) {
-            stmt += "\n"+newTexts.get(ctx.expr());    // expr
+            stmt += "\n" + newTexts.get(ctx.expr());    // expr
         }
         newTexts.put(ctx, stmt);
     }
@@ -131,7 +131,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     public void exitWhile_stmt(MiniCParser.While_stmtContext ctx) {
         // <(1) Fill here!>
         String stmt = "";
-        stmt += ctx.getChild(0)+"("+newTexts.get(ctx.expr())+"):";
+        stmt += ctx.getChild(0) + "(" + newTexts.get(ctx.expr()) + "):";
         stmt += newTexts.get(ctx.stmt());
 
         newTexts.put(ctx, stmt);
@@ -207,7 +207,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 
         String name = ctx.IDENT().getText();
         String value = "\"\"";
-        if (ctx.LITERAL() != null){
+        if (ctx.LITERAL() != null) {
             value = ctx.LITERAL().getText();
         }
 
@@ -238,14 +238,14 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     @Override
     public void exitIf_stmt(MiniCParser.If_stmtContext ctx) {
         String stmt = "";
-        String condExpr = newTexts.get(ctx.expr());
-        String thenStmt = newTexts.get(ctx.stmt(0));
+        stmt += ctx.getChild(0) + " " + newTexts.get(ctx.expr()) + ":";
 
+        stmt += newTexts.get(ctx.stmt(0));
 
         if (noElse(ctx)) {
 
         } else {
-
+            stmt += ctx.getChild(5).getText() + ":" + newTexts.get(ctx.stmt(1));
         }
 
         newTexts.put(ctx, stmt);
@@ -281,7 +281,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
             else
                 expr += newTexts.get(ctx.expr(0)) + " " + ctx.getChild(1).getText() + " " + newTexts.get(ctx.expr(1));
         } else if (ctx.getChildCount() == 4) { // ????
-            expr += ctx.getChild(0).getText() + "("+ctx.args().getText()+")";
+            expr += ctx.getChild(0).getText() + "(" + ctx.args().getText() + ")";
         }
 
         newTexts.put(ctx, expr);
