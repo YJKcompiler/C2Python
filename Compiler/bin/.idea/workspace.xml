@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ac6662d2-8735-41f4-9185-9ec62bf3c283" name="Default Changelist" comment="">
+    <list default="true" id="f08666a5-4edd-4ed2-ba8a-c15b0f353cf8" name="Default Changelist" comment="save temp for merge">
+      <change beforePath="$PROJECT_DIR$/bin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/listener/main/BytecodeGenListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/listener/main/BytecodeGenListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/listener/main/BytecodeGenListenerHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/listener/main/BytecodeGenListenerHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/listener/main/SymbolTable$FInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/listener/main/SymbolTable$FInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/listener/main/SymbolTable$VarInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/listener/main/SymbolTable$VarInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/listener/main/SymbolTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/listener/main/SymbolTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/listener/main/Translator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/listener/main/Translator$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/listener/main/Translator$OPTIONS.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/listener/main/Translator$OPTIONS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/listener/main/Translator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/listener/main/Translator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/listener/main/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/listener/main/SymbolTable.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,43 +18,26 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="$PROJECT_DIR$/.idea" />
-      </set>
-    </option>
-  </component>
-  <component name="JsbtTreeLayoutManager">
-    <layout place="tools.popupGrunt">
-      <scroll-view-position x="0" y="0" />
-    </layout>
-  </component>
-  <component name="ProjectId" id="1U0jPBjeVo0QpaActffHWkXkfVe" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="1UKbVcKNb9JzHIEtSXGsrR8gts9" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="SDKs" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/gen/listener/main" />
+      <recent name="C:\Users\zzz84\OneDrive\desktop\C2Python\Compiler" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -94,83 +77,29 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ac6662d2-8735-41f4-9185-9ec62bf3c283" name="Default Changelist" comment="" />
-      <created>1574500380122</created>
+      <changelist id="f08666a5-4edd-4ed2-ba8a-c15b0f353cf8" name="Default Changelist" comment="" />
+      <created>1575108258525</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1574500380122</updated>
-      <workItem from="1574500383454" duration="3696000" />
-      <workItem from="1574506449778" duration="1393000" />
-      <workItem from="1574508453790" duration="1003000" />
-      <workItem from="1574560253139" duration="4953000" />
-      <workItem from="1574571404411" duration="1066000" />
-      <workItem from="1574573125415" duration="4341000" />
-      <workItem from="1574602361416" duration="18261000" />
-      <workItem from="1574669068481" duration="13498000" />
-      <workItem from="1574689999623" duration="6447000" />
-      <workItem from="1574741891849" duration="5968000" />
+      <updated>1575108258525</updated>
+      <workItem from="1575108259957" duration="2981000" />
+      <workItem from="1575111687754" duration="399000" />
     </task>
-    <task id="LOCAL-00001" summary="change getName method">
-      <created>1574575382144</created>
+    <task id="LOCAL-00001" summary="save temp for merge">
+      <created>1575110412752</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1574575382144</updated>
+      <updated>1575110412752</updated>
     </task>
-    <task id="LOCAL-00002" summary="thinking put and get method">
-      <created>1574620526251</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1574620526251</updated>
-    </task>
-    <task id="LOCAL-00003" summary="recognize getMethod little">
-      <created>1574682620216</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1574682620216</updated>
-    </task>
-    <task id="LOCAL-00004" summary="recognize getMethod little 2">
-      <created>1574686313584</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1574686313584</updated>
-    </task>
-    <task id="LOCAL-00005" summary="recognize getMethod little 3">
-      <created>1574690903334</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1574690903334</updated>
-    </task>
-    <task id="LOCAL-00006" summary="modify return method">
-      <created>1574694240271</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1574694240271</updated>
-    </task>
-    <task id="LOCAL-00007" summary="debugging 1">
-      <created>1574746375771</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1574746375771</updated>
-    </task>
-    <task id="LOCAL-00008" summary="debugging 2">
-      <created>1574749049084</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1574749049084</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.py" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -186,114 +115,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="change Symbol Table import" />
-    <MESSAGE value="change getName method" />
-    <MESSAGE value="thinking put and get method" />
-    <MESSAGE value="recognize getMethod little" />
-    <MESSAGE value="recognize getMethod little 2" />
-    <MESSAGE value="recognize getMethod little 3" />
-    <MESSAGE value="modify return method" />
-    <MESSAGE value="debugging 1" />
-    <MESSAGE value="debugging 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="debugging 2" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/listener/main/Translator.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/listener/main/MiniCParser.java</url>
-          <line>383</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
-          <line>403</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java</url>
-          <line>122</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java</url>
-          <line>113</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListenerHelper.java</url>
-          <line>120</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/listener/main/SymbolTable.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/listener/main/MiniCParser.java</url>
-          <line>874</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint type="java-method">
-          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
-          <line>53</line>
-          <properties class="listener.main.BytecodeGenListener" method="enterLocal_decl">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
-          <line>140</line>
-          <properties class="listener.main.BytecodeGenListener" method="exitFun_decl">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
-          <line>85</line>
-          <properties class="listener.main.BytecodeGenListener" method="exitDecl">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
-          <line>65</line>
-          <properties class="listener.main.BytecodeGenListener" method="exitProgram">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/listener/main/BytecodeGenListener.java</url>
-          <line>192</line>
-          <properties class="listener.main.BytecodeGenListener" method="exitCompound_stmt">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/listener/main/SymbolTable.java</url>
-          <line>114</line>
-          <properties class="listener.main.SymbolTable" method="putFunSpecStr">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="save temp for merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="save temp for merge" />
   </component>
 </project>
