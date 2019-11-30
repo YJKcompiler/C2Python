@@ -277,7 +277,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
         }
         else if(ctx.getChildCount() == 3){ // 연산자 집합
             if (ctx.expr(1) == null)
-                expr += ctx.getChild(0).getText() + " " + ctx.getChild(1).getText() + " " + newTexts.get(ctx.expr(1)) +"\n";
+                expr += ctx.getChild(0).getText() + " " + ctx.getChild(1).getText() + " " + newTexts.get(ctx.expr(0)) +"\n";
             else
                 expr += newTexts.get(ctx.expr(0)) + " " + ctx.getChild(1).getText() + " " + newTexts.get(ctx.expr(1)) +"\n";
         }
