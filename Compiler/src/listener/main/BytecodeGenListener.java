@@ -163,9 +163,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 
 
     private String funcHeader(MiniCParser.Fun_declContext ctx, String fname) {
-        return ".method public static " + symbolTable.getFunSpecStr(fname) + "\n"
-                + "\t" + ".limit stack " + getStackSize(ctx) + "\n"
-                + "\t" + ".limit locals " + getLocalVarSize(ctx) + "\n";
+        return null;
 
     }
 
@@ -236,9 +234,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
         // <(4) Fill here>
         tab++;
         if (isIntReturn(ctx)) {
-            newTexts.put(ctx, getIndent(tab) + "ireturn\n");   //have to modify
         }else {
-            newTexts.put(ctx, getIndent(tab) + "return\n"); //have to modify
         }
         tab--;
     }
@@ -301,15 +297,10 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
         expr += getIndent(tab) + newTexts.get(ctx.expr(0));
         switch (ctx.getChild(0).getText()) {
             case "-":
-                expr += getIndent(tab) + "ineg \n";
                 break;
             case "--":
-                expr += getIndent(tab) + /*"ldc"*/"iconst 1" + "\n"
-                        + getIndent(tab) + "isub" + "\n";
                 break;
             case "++":
-                expr += getIndent(tab) + /*"ldc"*/"iconst 1" + "\n"
-                        + getIndent(tab) + "iadd" + "\n";
                 break;
             case "!":
                 break;
@@ -379,15 +370,11 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
         String fname = getFunName(ctx);
 
         if (fname.equals("_print")) {        // System.out.println
-            expr = getIndent(tab) + "print("
-                    + newTexts.get(ctx.args())
-                    + ")\n";
+
         } else {
-            expr = newTexts.get(ctx.args())
-                    + getIndent(tab) + "invokestatic " + getCurrentClassName() + "/" + symbolTable.getFunSpecStr(fname) + "\n";
         }
 
-        return expr;
+        return null;
 
     }
 
