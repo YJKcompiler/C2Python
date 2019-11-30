@@ -268,7 +268,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
         if (ctx.getChildCount() == 1) { // 자식을 변수를 가져옴
             expr += ctx.getChild(0).getText();
         } else if (ctx.getChildCount() == 2) { // 단항 연산자를 쓴 변수
-            expr += ctx.getChild(0).getText() + ctx.expr(0).getText();
+            expr += handleUnaryExpr(ctx, expr);
         } else if (ctx.getChildCount() == 3) { // 연산자 집합
             if (ctx.expr(1) == null)
                 expr += ctx.getChild(0).getText() + " " + ctx.getChild(1).getText() + " " + newTexts.get(ctx.expr(0));
@@ -284,15 +284,18 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 
     private String handleUnaryExpr(MiniCParser.ExprContext ctx, String expr) {
 
-        expr += newTexts.get(ctx.expr(0));
         switch (ctx.getChild(0).getText()) {
             case "-":
+            case "+":
+            case "!":
+                expr = ctx.getChild(0).getText() + newTexts.get(ctx.expr(0));
                 break;
+
             case "--":
+                expr = newTexts.get(ctx.expr(0)) + " -= 1";
                 break;
             case "++":
-                break;
-            case "!":
+                expr = newTexts.get(ctx.expr(0)) + " += 1";
                 break;
         }
         return expr;

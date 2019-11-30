@@ -12,7 +12,7 @@ void main() {
     while(b<10) {
         ++b;
         if(a or c) {
-            _print(a);
+            print(a);
             a = sum(a, -1);
             c = sub(b, 2);
         }
