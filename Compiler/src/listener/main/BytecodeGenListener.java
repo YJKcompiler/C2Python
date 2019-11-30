@@ -14,9 +14,6 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     ParseTreeProperty<String> newTexts = new ParseTreeProperty<String>();
     SymbolTable symbolTable = new SymbolTable();
 
-    int tab = 0;
-    int label = 0;
-
     // program	: decl+
 
     @Override
@@ -258,11 +255,9 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     public void exitReturn_stmt(MiniCParser.Return_stmtContext ctx) {
         // <(4) Fill here>
         String stmt = "return "; // 리턴문을 미리 넣어놓고
-        tab++;
         if (ctx.expr() != null) { // expr에 값이 있다면.
             stmt += newTexts.get(ctx.expr()); // 거기의 구문을 가져와서 다시 stmt에 스트링으로 저장한다.
         }
-        tab--;
         newTexts.put(ctx, stmt); // 저
     }
 
@@ -270,7 +265,6 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     @Override
     public void exitExpr(MiniCParser.ExprContext ctx) {
         String expr = "";
-        tab++;
 
         if (ctx.getChildCount() == 1) { // 자식을 변수를 가져옴
             expr += ctx.getChild(0).getText();
@@ -286,14 +280,12 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
         }
 
         newTexts.put(ctx, expr);
-        tab--;
     }
 
 
     private String handleUnaryExpr(MiniCParser.ExprContext ctx, String expr) {
 
-        tab++;
-        expr += /*getIndent(tab) +*/ newTexts.get(ctx.expr(0));
+        expr += newTexts.get(ctx.expr(0));
         switch (ctx.getChild(0).getText()) {
             case "-":
                 break;
@@ -304,7 +296,6 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
             case "!":
                 break;
         }
-        tab--;
         return expr;
     }
 
