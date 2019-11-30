@@ -142,32 +142,35 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     @Override
     public void exitFun_decl(MiniCParser.Fun_declContext ctx) {
         // <(2) Fill here!>
-        String fun_decl = "def "+ctx.IDENT().getText();
-        fun_decl += newTexts.get(ctx.params());
+        String fun_decl = "def "+ctx.IDENT().getText() + "(";
+        fun_decl += newTexts.get(ctx.params()) + "):\n";
         fun_decl += newTexts.get(ctx.compound_stmt());
-
-        fun_decl += ":\n";
-
         newTexts.put(ctx, fun_decl);
     }
 
     @Override
     public void exitParams(ParamsContext ctx) {
-        if (ctx.VOID() != null) {
+        /**
+         * params == param (, param)*
+         * param == newTexts.get(ctx.child)
+         **/
+        if (ctx.VOID() != null) {   //except void
             return;
         }
 
         int childCnt = ctx.getChildCount();
         String ret = "";
-        for (int i = 0; i < childCnt; i+=2) {
+        for (int i = 0; i < childCnt; i+=2) {   //odd(i) == param and even(i) == ','
             ret += newTexts.get(ctx.getChild(i));
-            if(i+1 < childCnt) ret += ",";
+            if(i+1 < childCnt) ret += ", "; //if param is last break
         }
         newTexts.put(ctx, ret);
     }
 
     @Override
     public void exitParam(MiniCParser.ParamContext ctx) {
+        // for except type
+        // type x => newTexts.put(x)
         newTexts.put(ctx, ctx.IDENT().getText());
     }
 
