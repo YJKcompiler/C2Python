@@ -65,7 +65,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 
     @Override
     public void exitProgram(MiniCParser.ProgramContext ctx) {
-        String classProlog = getFunProlog();
+//        String classProlog = getFunProlog();
 
         String fun_decl = "", var_decl = "";
 
@@ -76,8 +76,8 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
                 var_decl += newTexts.get(ctx.decl(i));
         }
 
-        newTexts.put(ctx, classProlog + var_decl + fun_decl);
-
+//        newTexts.put(ctx, classProlog + var_decl + fun_decl);
+        newTexts.put(ctx, var_decl + fun_decl);
         System.out.println(newTexts.get(ctx));
     }
 
@@ -288,7 +288,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     private String handleUnaryExpr(MiniCParser.ExprContext ctx, String expr) {
 
         tab++;
-        expr += getIndent(tab) + newTexts.get(ctx.expr(0));
+        expr += /*getIndent(tab) +*/ newTexts.get(ctx.expr(0));
         switch (ctx.getChild(0).getText()) {
             case "-":
                 break;

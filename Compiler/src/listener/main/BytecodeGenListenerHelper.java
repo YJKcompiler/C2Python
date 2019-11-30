@@ -125,11 +125,11 @@ public class BytecodeGenListenerHelper {
 	static String getCurrentClassName() {
 		return "Test";
 	}
-	static String getIndent(int tab){
-		String tabs = "";
-		for (int i = 0; i < tab; i++) {
-			tabs += "\t";
-		}
-		return tabs;
-	}
+//	static String getIndent(int tab){
+//		String tabs = "";
+//		for (int i = 0; i < tab; i++) {
+//			tabs += "\t";
+//		}
+//		return tabs;
+//	}
 }
