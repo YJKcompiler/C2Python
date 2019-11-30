@@ -37,8 +37,19 @@ public class Translator {
 		CommonTokenStream tokens = new CommonTokenStream( lexer );
 		MiniCParser parser = new MiniCParser( tokens );
 		ParseTree tree = parser.program();
-		
+
+
 		ParseTreeWalker walker = new ParseTreeWalker();
+		JFrame frame = new JFrame("Antlr AST");
+		JPanel panel = new JPanel();
+		TreeViewer viewr = new TreeViewer(Arrays.asList(
+				parser.getRuleNames()),tree);
+		viewr.setScale(0.8);//scale a little
+		panel.add(viewr);
+		frame.add(panel);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(1500,600);
+		frame.setVisible(true);
 		switch (getOption(args)) {
 			/*case PRETTYPRINT :
 				walker.walk(new MiniCPrintListener(), tree );
