@@ -143,7 +143,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     public void exitFun_decl(MiniCParser.Fun_declContext ctx) {
         // <(2) Fill here!>
         String fun_decl = "def "+ctx.IDENT().getText() + "(";
-        fun_decl += newTexts.get(ctx.params()) + "):\n";
+        fun_decl += newTexts.get(ctx.params()) + "):";
         fun_decl += newTexts.get(ctx.compound_stmt());
         newTexts.put(ctx, fun_decl);
     }
@@ -214,19 +214,24 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 
         // int x;    -->  x = ""
         // int x=10; --> x = 10
-        newTexts.put(ctx, name + " = " + value);
+        newTexts.put(ctx, "\n"+name + " = " + value);
     }
 
 
     // compound_stmt	: '{' local_decl* stmt* '}'
     @Override
     public void exitCompound_stmt(MiniCParser.Compound_stmtContext ctx) {
-        // <(3) Fill here>
         String compound_stmt = "";
-        for (int i = 1; i < ctx.getChildCount() - 1; i++) {
-            compound_stmt += newTexts.get(ctx.getChild(i));
+        // 0 : {
+        // -1 : }
+        for (int i = 1; i < ctx.getChildCount() - 2; i++) {
+            // 1 ~ -3
+            compound_stmt += newTexts.get(ctx.getChild(i)) + "\n";
         }
+        compound_stmt += newTexts.get(ctx.getChild(ctx.getChildCount()-2));
         compound_stmt = compound_stmt.replace("\n", "\n\t");
+        compound_stmt += "\n";
+        // -2
         newTexts.put(ctx, compound_stmt);
     }
 
