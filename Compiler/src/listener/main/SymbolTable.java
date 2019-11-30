@@ -80,7 +80,7 @@ public class SymbolTable {
         printfInfo.sigStr = "print";
         strcatInfo.sigStr = ""; // 스트링을 파이썬에서 아직 못 안함.
         FInfo maininfo = new FInfo(); //
-        maininfo.sigStr = "if __name__ == \"__main__\": \n\tdef main():";
+        maininfo.sigStr = "if __name__ == \"__main__\": \n\tmain()";
 
         _fsymtable.put("printf", printfInfo);
         _fsymtable.put("strcat", strcatInfo);
