@@ -1,7 +1,10 @@
 int add(int x, int y) {
 	int a = 1;
-	while(a<10){
-	    a= a+1;
+
+	if(a<10){
+	    a =20;
+	}else{
+        a =10;
 	}
 	return a;
 }
