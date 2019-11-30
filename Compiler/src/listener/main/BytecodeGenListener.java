@@ -120,7 +120,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     public void exitExpr_stmt(MiniCParser.Expr_stmtContext ctx) {
         String stmt = "";
         if (ctx.getChildCount() == 2) {
-            stmt += newTexts.get(ctx.expr());    // expr
+            stmt += "\n"+newTexts.get(ctx.expr());    // expr
         }
         newTexts.put(ctx, stmt);
     }
@@ -131,9 +131,8 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     public void exitWhile_stmt(MiniCParser.While_stmtContext ctx) {
         // <(1) Fill here!>
         String stmt = "";
-
-        String condExpr = newTexts.get(ctx.expr());
-        String thenStmt = newTexts.get(ctx.stmt());
+        stmt += ctx.getChild(0)+"("+newTexts.get(ctx.expr())+"):";
+        stmt += newTexts.get(ctx.stmt());
 
         newTexts.put(ctx, stmt);
     }
@@ -142,7 +141,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     @Override
     public void exitFun_decl(MiniCParser.Fun_declContext ctx) {
         // <(2) Fill here!>
-        String fun_decl = "def " + ctx.IDENT().getText() + "(";
+        String fun_decl = "\ndef " + ctx.IDENT().getText() + "(";
         fun_decl += newTexts.get(ctx.params()) + "):";
         fun_decl += newTexts.get(ctx.compound_stmt());
         newTexts.put(ctx, fun_decl);
@@ -275,14 +274,14 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
         if (ctx.getChildCount() == 1) { // 자식을 변수를 가져옴
             expr += ctx.getChild(0).getText();
         } else if (ctx.getChildCount() == 2) { // 단항 연산자를 쓴 변수
-            expr += ctx.expr(0).getText() + " " + ctx.getChild(0).getText() + " " + ctx.expr(1).getText();
+            expr += ctx.getChild(0).getText() + ctx.expr(0).getText();
         } else if (ctx.getChildCount() == 3) { // 연산자 집합
             if (ctx.expr(1) == null)
-                expr += ctx.getChild(0).getText() + " " + ctx.getChild(1).getText() + " " + newTexts.get(ctx.expr(0)) + "\n";
+                expr += ctx.getChild(0).getText() + " " + ctx.getChild(1).getText() + " " + newTexts.get(ctx.expr(0));
             else
-                expr += newTexts.get(ctx.expr(0)) + " " + ctx.getChild(1).getText() + " " + newTexts.get(ctx.expr(1)) + "\n";
+                expr += newTexts.get(ctx.expr(0)) + " " + ctx.getChild(1).getText() + " " + newTexts.get(ctx.expr(1));
         } else if (ctx.getChildCount() == 4) { // ????
-
+            expr += ctx.getChild(0).getText() + "("+ctx.args().getText()+")";
         }
 
         newTexts.put(ctx, expr);
