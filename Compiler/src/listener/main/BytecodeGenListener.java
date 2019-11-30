@@ -258,47 +258,21 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
         String expr = "";
         tab++;
 
-        if (ctx.getChildCount() <= 0) {
-            newTexts.put(ctx, "");
-            return;
+        if (ctx.getChildCount() == 1){ // 자식을 변수를 가져옴
+            expr += ctx.getChild(0).getText();
+        }else if(ctx.getChildCount() == 2){ // 단항 연산자를 쓴 변수
+            expr += ctx.expr(0).getText() + " " + ctx.getChild(0).getText() + " " + ctx.expr(1).getText();
+        }
+        else if(ctx.getChildCount() == 3){ // 연산자 집합
+            if (ctx.expr(1) == null)
+                expr += ctx.getChild(0).getText() + " " + ctx.getChild(1).getText() + " " + newTexts.get(ctx.expr(1));
+            else
+                expr += newTexts.get(ctx.expr(0)) + " " + ctx.getChild(1).getText() + " " + newTexts.get(ctx.expr(1));
+        }
+        else if(ctx.getChildCount() == 4){ // ????
+
         }
 
-        if (ctx.getChildCount() == 1) { // IDENT | LITERAL
-            if (ctx.IDENT() != null) {
-                String idName = ctx.IDENT().getText();
-                if (symbolTable.getVarType(idName) == Type.INT) {
-
-                }
-                //else	// Type int array => Later! skip now..
-                //	expr += "           lda " + symbolTable.get(ctx.IDENT().getText()).value + " \n";
-            } else if (ctx.LITERAL() != null) {
-                String literalStr = ctx.LITERAL().getText();
-                expr += getIndent(tab) + /*"ldc "*/"iconst " + literalStr + " \n";
-            }
-        } else if (ctx.getChildCount() == 2) { // UnaryOperation
-            expr = handleUnaryExpr(ctx, newTexts.get(ctx) + expr);
-        } else if (ctx.getChildCount() == 3) {
-            if (ctx.getChild(0).getText().equals("(")) {        // '(' expr ')'
-                expr = newTexts.get(ctx.expr(0));
-
-            } else if (ctx.getChild(1).getText().equals("=")) {    // IDENT '=' expr
-
-            } else {                                            // binary operation
-                expr = handleBinExpr(ctx, expr);
-
-            }
-        }
-        // IDENT '(' args ')' |  IDENT '[' expr ']'
-        else if (ctx.getChildCount() == 4) {
-            if (ctx.args() != null) {        // function calls
-                expr = handleFunCall(ctx, expr);
-            } else { // expr
-                // Arrays: TODO
-            }
-        }
-        // IDENT '[' expr ']' '=' expr
-        else { // Arrays: TODO			*/
-        }
         newTexts.put(ctx, expr);
         tab--;
     }
