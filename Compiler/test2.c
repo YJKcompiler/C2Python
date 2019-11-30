@@ -1,7 +1,8 @@
 int add(int x, int y) {
 	int a = 1;
-	a = a + x;
-
+	while(a<10){
+	    a= a+1;
+	}
 	return a;
 }
 
