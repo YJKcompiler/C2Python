@@ -142,7 +142,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     @Override
     public void exitFun_decl(MiniCParser.Fun_declContext ctx) {
         // <(2) Fill here!>
-        String fun_decl = "def "+ctx.IDENT().getText() + "(";
+        String fun_decl = "def " + ctx.IDENT().getText() + "(";
         fun_decl += newTexts.get(ctx.params()) + "):";
         fun_decl += newTexts.get(ctx.compound_stmt());
         newTexts.put(ctx, fun_decl);
@@ -160,9 +160,9 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 
         int childCnt = ctx.getChildCount();
         String ret = "";
-        for (int i = 0; i < childCnt; i+=2) {   //odd(i) == param and even(i) == ','
+        for (int i = 0; i < childCnt; i += 2) {   //odd(i) == param and even(i) == ','
             ret += newTexts.get(ctx.getChild(i));
-            if(i+1 < childCnt) ret += ", "; //if param is last break
+            if (i + 1 < childCnt) ret += ", "; //if param is last break
         }
         newTexts.put(ctx, ret);
     }
@@ -208,13 +208,13 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 
         String name = ctx.IDENT().getText();
         String value = "";
-        if (ctx.LITERAL() != null){
+        if (ctx.LITERAL() != null) {
             value = ctx.LITERAL().getText();
         }
 
         // int x;    -->  x = ""
         // int x=10; --> x = 10
-        newTexts.put(ctx, "\n"+name + " = " + value);
+        newTexts.put(ctx, "\n" + name + " = " + value);
     }
 
 
@@ -228,7 +228,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
             // 1 ~ -3
             compound_stmt += newTexts.get(ctx.getChild(i)) + "\n";
         }
-        compound_stmt += newTexts.get(ctx.getChild(ctx.getChildCount()-2));
+        compound_stmt += newTexts.get(ctx.getChild(ctx.getChildCount() - 2));
         compound_stmt = compound_stmt.replace("\n", "\n\t");
         compound_stmt += "\n";
         // -2
@@ -257,11 +257,13 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     @Override
     public void exitReturn_stmt(MiniCParser.Return_stmtContext ctx) {
         // <(4) Fill here>
+        String stmt = "return "; // 리턴문을 미리 넣어놓고
         tab++;
-        if (isIntReturn(ctx)) {
-        }else {
+        if (ctx.expr() != null) { // expr에 값이 있다면.
+            stmt += newTexts.get(ctx.expr()); // 거기의 구문을 가져와서 다시 stmt에 스트링으로 저장한다.
         }
         tab--;
+        newTexts.put(ctx, stmt); // 저장
     }
 
 
@@ -270,18 +272,16 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
         String expr = "";
         tab++;
 
-        if (ctx.getChildCount() == 1){ // 자식을 변수를 가져옴
+        if (ctx.getChildCount() == 1) { // 자식을 변수를 가져옴
             expr += ctx.getChild(0).getText();
-        }else if(ctx.getChildCount() == 2){ // 단항 연산자를 쓴 변수
+        } else if (ctx.getChildCount() == 2) { // 단항 연산자를 쓴 변수
             expr += ctx.expr(0).getText() + " " + ctx.getChild(0).getText() + " " + ctx.expr(1).getText();
-        }
-        else if(ctx.getChildCount() == 3){ // 연산자 집합
+        } else if (ctx.getChildCount() == 3) { // 연산자 집합
             if (ctx.expr(1) == null)
-                expr += ctx.getChild(0).getText() + " " + ctx.getChild(1).getText() + " " + newTexts.get(ctx.expr(0)) +"\n";
+                expr += ctx.getChild(0).getText() + " " + ctx.getChild(1).getText() + " " + newTexts.get(ctx.expr(0)) + "\n";
             else
-                expr += newTexts.get(ctx.expr(0)) + " " + ctx.getChild(1).getText() + " " + newTexts.get(ctx.expr(1)) +"\n";
-        }
-        else if(ctx.getChildCount() == 4){ // ????
+                expr += newTexts.get(ctx.expr(0)) + " " + ctx.getChild(1).getText() + " " + newTexts.get(ctx.expr(1)) + "\n";
+        } else if (ctx.getChildCount() == 4) { // ????
 
         }
 
