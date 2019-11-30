@@ -207,7 +207,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
          **/
 
         String name = ctx.IDENT().getText();
-        String value = "";
+        String value = "\"\"";
         if (ctx.LITERAL() != null){
             value = ctx.LITERAL().getText();
         }
