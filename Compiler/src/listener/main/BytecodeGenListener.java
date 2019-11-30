@@ -143,7 +143,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
     public void exitFun_decl(MiniCParser.Fun_declContext ctx) {
         // <(2) Fill here!>
         String fun_decl = "def "+ctx.IDENT().getText() + "(";
-        fun_decl += newTexts.get(ctx.params()) + "):\n";
+        fun_decl += newTexts.get(ctx.params()) + "):";
         fun_decl += newTexts.get(ctx.compound_stmt());
         newTexts.put(ctx, fun_decl);
     }
@@ -214,7 +214,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 
         // int x;    -->  x = ""
         // int x=10; --> x = 10
-        newTexts.put(ctx, name + " = " + value);
+        newTexts.put(ctx, "\n"+name + " = " + value);
     }
 
 
