@@ -135,13 +135,6 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
         String condExpr = newTexts.get(ctx.expr());
         String thenStmt = newTexts.get(ctx.stmt());
 
-        String lend = symbolTable.newLabel();
-        String lwhile = symbolTable.newLabel();
-
-        stmt += condExpr + "\n"
-                + lwhile + ":\n" + getIndent(tab+1) + "ifeq " + lend + "\n"
-                + thenStmt + "\n"+getIndent(tab+1) + "goto " + lwhile + "\n"
-                + lend + ":\n" + getIndent(tab);
         newTexts.put(ctx, stmt);
     }
 
@@ -201,9 +194,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 
         if (isDeclWithInit(ctx)) {
 //            symbolTable.putLocalVarWithInitVal(getLocalVarName(ctx), Type.INT, initVal(ctx)); //have to relocate
-            String vId = symbolTable.getVarId(ctx);
-            varDecl += "\ticonst "/*"ldc "*/ + ctx.LITERAL().getText() + "\n"
-                    + "\tistore_" + vId + "\n";
+
         }
 
         newTexts.put(ctx, varDecl);
@@ -228,23 +219,11 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
         String condExpr = newTexts.get(ctx.expr());
         String thenStmt = newTexts.get(ctx.stmt(0));
 
-        String lend = symbolTable.newLabel();
-        String lelse = symbolTable.newLabel();
-
 
         if (noElse(ctx)) {
-            stmt += condExpr + "\n"
-                    + getIndent(tab+1) + "ifeq " + lend + "\n"
-                    + thenStmt + "\n"
-                    + lend + ":\n" + getIndent(tab);
+
         } else {
-            String elseStmt = newTexts.get(ctx.stmt(1));
-            stmt += condExpr + "\n"
-                    + getIndent(tab+1) + "ifeq " + lelse + "\n"
-                    + thenStmt + "\n"
-                    + getIndent(tab+1) + "goto " + lend + "\n"
-                    + lelse + ":\n" + getIndent(tab) + elseStmt + "\n"
-                    + lend + ":\n" + getIndent(tab);
+
         }
 
         newTexts.put(ctx, stmt);
@@ -279,7 +258,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
             if (ctx.IDENT() != null) {
                 String idName = ctx.IDENT().getText();
                 if (symbolTable.getVarType(idName) == Type.INT) {
-                    expr += getIndent(tab) + "iload_" + symbolTable.getVarId(idName) + " \n";
+
                 }
                 //else	// Type int array => Later! skip now..
                 //	expr += "           lda " + symbolTable.get(ctx.IDENT().getText()).value + " \n";
@@ -294,8 +273,6 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
                 expr = newTexts.get(ctx.expr(0));
 
             } else if (ctx.getChild(1).getText().equals("=")) {    // IDENT '=' expr
-                expr = newTexts.get(ctx.expr(0))
-                        + getIndent(tab) + "istore_" + symbolTable.getVarId(ctx.IDENT().getText()) + " \n";
 
             } else {                                            // binary operation
                 expr = handleBinExpr(ctx, expr);
@@ -319,9 +296,6 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 
 
     private String handleUnaryExpr(MiniCParser.ExprContext ctx, String expr) {
-        String l1 = symbolTable.newLabel();
-        String l2 = symbolTable.newLabel();
-        String lend = symbolTable.newLabel();
 
         tab++;
         expr += getIndent(tab) + newTexts.get(ctx.expr(0));
@@ -338,11 +312,6 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
                         + getIndent(tab) + "iadd" + "\n";
                 break;
             case "!":
-                expr += getIndent(tab) + "ifeq " + l2 + "\n"
-                        + l1 + ": " + /*"ldc"*/"iconst 0" + "\n"
-                        + getIndent(tab) + "goto " + lend + "\n"
-                        + l2 + ": " + /*"ldc"*/"iconst 1" + "\n"
-                        + lend + ": " + "\n";
                 break;
         }
         tab--;
@@ -351,8 +320,7 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 
 
     private String handleBinExpr(MiniCParser.ExprContext ctx, String expr) {
-        String l2 = symbolTable.newLabel();
-        String lend = symbolTable.newLabel();
+
 
         expr += newTexts.get(ctx.expr(0));
         expr += newTexts.get(ctx.expr(1));
@@ -360,89 +328,47 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
 
         switch (ctx.getChild(1).getText()) {
             case "*":
-                expr += getIndent(tab) + "imul \n";
+
                 break;
             case "/":
-                expr += getIndent(tab) + "idiv \n";
                 break;
             case "%":
-                expr += getIndent(tab) + "irem \n";
                 break;
             case "+":        // expr(0) expr(1) iadd
-                expr += getIndent(tab) + "iadd \n";
                 break;
             case "-":
-                expr += getIndent(tab) + "isub \n";
                 break;
 
             case "==":
-                expr += getIndent(tab) + "isub " + "\n"
-                        + getIndent(tab) + "ifeq " + l2 + "\n"
-                        + getIndent(tab) + /*"ldc"*/"iconst 0" + "\n"
-                        + getIndent(tab) + "goto " + lend + "\n"
-                        + l2 + ":\n" + getIndent(tab) + /*"ldc"*/"iconst 1" + "\n"
-                        + lend + ":\n" + getIndent(tab);
+
                 break;
             case "!=":
-                expr += getIndent(tab) + "isub " + "\n"
-                        + getIndent(tab) + "ifne " + l2 + "\n"
-                        + getIndent(tab) + /*"ldc"*/"iconst 0" + "\n"
-                        + getIndent(tab) + "goto " + lend + "\n"
-                        + l2 + ":\n" + getIndent(tab) + /*"ldc"*/"iconst 1" + "\n"
-                        + lend + ":\n" + getIndent(tab);
+
                 break;
             case "<=":
-                // <(5) Fill here>
-                expr += getIndent(tab) + "isub " + "\n"
-                        + getIndent(tab) + "ifle " + l2 + "\n"
-                        + getIndent(tab) + /*"ldc"*/"iconst 0" + "\n"
-                        + getIndent(tab) + "goto " + lend + "\n"
-                        + l2 + ":\n" + getIndent(tab) + /*"ldc"*/"iconst 1" + "\n"
-                        + lend + ":\n" + getIndent(tab);
+
                 break;
             case "<":
-                expr += getIndent(tab) + "isub " + "\n"
-                        + getIndent(tab) + "iflt " + l2 + "\n"
-                        + getIndent(tab) + /*"ldc"*/"iconst 0" + "\n"
-                        + getIndent(tab) + "goto " + lend + "\n"
-                        + l2 + ":\n" + getIndent(tab) + /*"ldc"*/"iconst 1" + "\n"
-                        + lend + ":\n" + getIndent(tab);
+
                 // <(6) Fill here>
                 break;
 
             case ">=":
-                expr += getIndent(tab) + "isub " + "\n"
-                        + getIndent(tab) + "ifge " + l2 + "\n"
-                        + getIndent(tab) + /*"ldc"*/"iconst 0" + "\n"
-                        + getIndent(tab) + "goto " + lend + "\n"
-                        + l2 + ":\n" + getIndent(tab) + /*"ldc"*/"iconst 1" + "\n"
-                        + lend + ":\n" + getIndent(tab);
+
                 // <(7) Fill here>
 
                 break;
 
             case ">":
-                expr += getIndent(tab) + "isub " + "\n"
-                        + getIndent(tab) + "ifgt " + l2 + "\n"
-                        + getIndent(tab) + /*"ldc"*/"iconst 0" + "\n"
-                        + getIndent(tab) + "goto " + lend + "\n"
-                        + l2 + ":\n" + getIndent(tab) + /*"ldc"*/"iconst 1" + "\n"
-                        + lend + ":\n" + getIndent(tab);
+
                 // <(8) Fill here>
                 break;
 
             case "and":
-                expr += getIndent(tab) + "ifne " + lend + "\n" + getIndent(tab) + "ifne " + lend + "\n"
-                        + getIndent(tab) + /*"ldc"*/"goto " + l2 + "\n"
-                        + lend + ":\n" + getIndent(tab) + "iconst 0\n"
-                        + l2 + ":\n" + getIndent(tab) + "iconst 1\n";
+
                 break;
             case "or":
-                // <(9) Fill here>
-                expr += getIndent(tab) + "ifeq " + lend + "\n" + getIndent(tab) + "ifeq " + lend + "\n"
-                        + getIndent(tab) + "iconst 0" + "\n" + getIndent(tab) + /*"ldc"*/"goto " + l2 + "\n"
-                        + lend + ":\n" + getIndent(tab) + "iconst 1\n"
-                        + l2 + ":\n";
+
                 break;
         }
 
@@ -453,9 +379,9 @@ public class BytecodeGenListener extends MiniCBaseListener implements ParseTreeL
         String fname = getFunName(ctx);
 
         if (fname.equals("_print")) {        // System.out.println
-            expr = getIndent(tab) + "getstatic java/lang/System/out Ljava/io/PrintStream; " + "\n"
+            expr = getIndent(tab) + "print("
                     + newTexts.get(ctx.args())
-                    + getIndent(tab) + "invokevirtual " + symbolTable.getFunSpecStr("_print") + "\n";
+                    + ")\n";
         } else {
             expr = newTexts.get(ctx.args())
                     + getIndent(tab) + "invokestatic " + getCurrentClassName() + "/" + symbolTable.getFunSpecStr(fname) + "\n";
