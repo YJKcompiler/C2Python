@@ -16,18 +16,15 @@ public class SymbolTable {
 
     static public class VarInfo {
         Type type;
-        int id;
         int initVal;
 
-        public VarInfo(Type type, int id, int initVal) {
+        public VarInfo(Type type, int initVal) {
             this.type = type;
-            this.id = id;
             this.initVal = initVal;
         }
 
-        public VarInfo(Type type, int id) {
+        public VarInfo(Type type) {
             this.type = type;
-            this.id = id;
             this.initVal = 0;
         }
     }
@@ -41,10 +38,6 @@ public class SymbolTable {
     private Map<String, FInfo> _fsymtable = new HashMap<>();    // function
 
 
-    private int _globalVarID = 0;
-    private int _localVarID = 0;
-    private int _labelID = 0;
-    private int _tempVarID = 0;
 
     SymbolTable() {
         initFunDecl();
@@ -53,29 +46,26 @@ public class SymbolTable {
 
     void initFunDecl() {        // at each func decl
         _lsymtable.clear();
-        _localVarID = 0;
-        _labelID = 0;
-        _tempVarID = 32;
     }
 
     void putLocalVar(String varname, Type type) {
         //<Fill here>
-        _lsymtable.put(varname, new VarInfo(type, _localVarID++));    //have to modify
+        _lsymtable.put(varname, new VarInfo(type));    //have to modify
     }
 
     void putGlobalVar(String varname, Type type) {
         //<Fill here>
-        _gsymtable.put(varname, new VarInfo(type, _globalVarID++));
+        _gsymtable.put(varname, new VarInfo(type));
     }
 
     void putLocalVarWithInitVal(String varname, Type type, int initVar) {
         //<Fill here>
-        _lsymtable.put(varname, new VarInfo(type, _localVarID++, initVar));
+        _lsymtable.put(varname, new VarInfo(type, initVar));
     }
 
     void putGlobalVarWithInitVal(String varname, Type type, int initVar) {
         //<Fill here>
-        _gsymtable.put(varname, new VarInfo(type, _globalVarID++, initVar));
+        _gsymtable.put(varname, new VarInfo(type,initVar));
     }
 
     void putParams(MiniCParser.ParamsContext params) {
@@ -88,9 +78,10 @@ public class SymbolTable {
         FInfo printfInfo = new FInfo(); // 프린트 규칙
         FInfo strcatInfo = new FInfo();
         printfInfo.sigStr = "print";
-        strcatInfo.sigStr = ""; // 스트링을 파이썬에서 아직 못함 안함.
+        strcatInfo.sigStr = ""; // 스트링을 파이썬에서 아직 못 안함.
         FInfo maininfo = new FInfo(); //
-        maininfo.sigStr = "if __name__ == \"__main__\": \n\tdef main():"; //
+        maininfo.sigStr = "if __name__ == \"__main__\": \n\tdef main():";
+
         _fsymtable.put("printf", printfInfo);
         _fsymtable.put("strcat", strcatInfo);
         _fsymtable.put("main", maininfo);
@@ -103,7 +94,6 @@ public class SymbolTable {
 
     public String getFunSpecStr(Fun_declContext ctx) {
         // <Fill here>
-
         return getFunSpecStr(ctx.getText());
     }
 
@@ -127,18 +117,6 @@ public class SymbolTable {
         return res;
     }
 
-    String getVarId(String name) {
-        // <Fill here>
-        VarInfo lvarId = (VarInfo) _lsymtable.get(name);
-        if (lvarId != null) return Integer.toString(lvarId.id);
-        VarInfo gvarID = (VarInfo) _gsymtable.get(name);
-        if (gvarID != null) {
-            return Integer.toString(gvarID.id);
-        }
-
-        return null; //have to modify
-    }
-
     Type getVarType(String name) {
         VarInfo lvar = (VarInfo) _lsymtable.get(name);
         if (lvar != null) {
@@ -153,28 +131,5 @@ public class SymbolTable {
         return Type.ERROR;
     }
 
-    String newLabel() {
-        return "label" + _labelID++;
-    }
-
-    String newTempVar() {
-        String id = "";
-        return id + _tempVarID--;
-    }
-
-    // global
-    public String getVarId(Var_declContext ctx) {
-        // <Fill here>
-        //return _gsymtable.get(ctx.IDENT().getText());
-        return ctx.IDENT().getSymbol().getText();
-        //return null;//have to modify
-    }
-
-    // local
-    public String getVarId(Local_declContext ctx) {
-        String sname = "";
-        sname += getVarId(ctx.IDENT().getText());
-        return sname;
-    }
 
 }
