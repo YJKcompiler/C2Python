@@ -19,15 +19,13 @@ public class SymbolTable {
         int id;
         int initVal;
 
-        public VarInfo(Type type, int id, int initVal) {
+        public VarInfo(Type type, int initVal) {
             this.type = type;
-            this.id = id;
             this.initVal = initVal;
         }
 
-        public VarInfo(Type type, int id) {
+        public VarInfo(Type type) {
             this.type = type;
-            this.id = id;
             this.initVal = 0;
         }
     }
@@ -53,29 +51,26 @@ public class SymbolTable {
 
     void initFunDecl() {        // at each func decl
         _lsymtable.clear();
-        _localVarID = 0;
-        _labelID = 0;
-        _tempVarID = 32;
     }
 
     void putLocalVar(String varname, Type type) {
         //<Fill here>
-        _lsymtable.put(varname, new VarInfo(type, _localVarID++));    //have to modify
+        _lsymtable.put(varname, new VarInfo(type));    //have to modify
     }
 
     void putGlobalVar(String varname, Type type) {
         //<Fill here>
-        _gsymtable.put(varname, new VarInfo(type, _globalVarID++));
+        _gsymtable.put(varname, new VarInfo(type));
     }
 
     void putLocalVarWithInitVal(String varname, Type type, int initVar) {
         //<Fill here>
-        _lsymtable.put(varname, new VarInfo(type, _localVarID++, initVar));
+        _lsymtable.put(varname, new VarInfo(type, initVar));
     }
 
     void putGlobalVarWithInitVal(String varname, Type type, int initVar) {
         //<Fill here>
-        _gsymtable.put(varname, new VarInfo(type, _globalVarID++, initVar));
+        _gsymtable.put(varname, new VarInfo(type,initVar));
     }
 
     void putParams(MiniCParser.ParamsContext params) {
@@ -88,9 +83,10 @@ public class SymbolTable {
         FInfo printfInfo = new FInfo(); // 프린트 규칙
         FInfo strcatInfo = new FInfo();
         printfInfo.sigStr = "print";
-        strcatInfo.sigStr = ""; // 스트링을 파이썬에서 아직 못함 안함.
+        strcatInfo.sigStr = ""; // 스트링을 파이썬에서 아직 못 안함.
         FInfo maininfo = new FInfo(); //
-        maininfo.sigStr = "if __name__ == \"__main__\": \n\tdef main():"; //
+        maininfo.sigStr = "if __name__ == \"__main__\": \n\tdef main():";
+
         _fsymtable.put("printf", printfInfo);
         _fsymtable.put("strcat", strcatInfo);
         _fsymtable.put("main", maininfo);
@@ -154,12 +150,11 @@ public class SymbolTable {
     }
 
     String newLabel() {
-        return "label" + _labelID++;
+        return null;
     }
 
     String newTempVar() {
-        String id = "";
-        return id + _tempVarID--;
+        return null;
     }
 
     // global
