@@ -1,7 +1,11 @@
 package listener.main;
+import org.antlr.v4.gui.TreeViewer;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
+
+import javax.swing.*;
+import java.util.Arrays;
 
 public class Translator {
 	enum OPTIONS {
@@ -41,6 +45,16 @@ public class Translator {
 				break;*/
 			case BYTECODEGEN:
 				walker.walk(new BytecodeGenListener(), tree );
+				JFrame frame = new JFrame("Antlr AST");
+				JPanel panel = new JPanel();
+				TreeViewer viewr = new TreeViewer(Arrays.asList(
+						parser.getRuleNames()),tree);
+				viewr.setScale(0.8);//scale a little
+				panel.add(viewr);
+				frame.add(panel);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.setSize(1500,600);
+				frame.setVisible(true);
 				break;
 			/*case UCODEGEN:
 				walker.walk(new UCodeGenListener(), tree );
